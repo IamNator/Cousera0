@@ -51,6 +51,7 @@ func (p *Philo) Eat(ch chan int, wg *sync.WaitGroup, num int){
 		p.rightCS.Lock()
 
 		fmt.Printf("starting to eat %d\n", num+1)
+		time.Sleep(2 * time.Second)
 		fmt.Printf("finishing eating %d\n", num+1)
 
 		p.rightCS.Unlock()

@@ -6,8 +6,6 @@ import (
 	"time"
 )
 
-var numm int
-
 func main(){
 
 	var wg sync.WaitGroup
@@ -47,7 +45,7 @@ type Philo struct {
 func (p *Philo) Eat(ch chan int, wg *sync.WaitGroup, num int){
 
 
-	for  {
+	for _ = range ch {
 
 		p.leftCS.Lock()
 		p.rightCS.Lock()
@@ -84,11 +82,12 @@ func host(ch []chan int){
 
 		ch[0] <- i
 		ch[3] <- i
-		time.Sleep(20 * time.Millisecond)
+		time.Sleep(70 * time.Millisecond)
 		ch[1] <- i
 		ch[4] <- i
 		time.Sleep(70 * time.Millisecond)
 		ch[0] <- i
+		time.Sleep(70 * time.Millisecond)
 
 	}
 
